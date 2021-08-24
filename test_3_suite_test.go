@@ -4,9 +4,9 @@ import (
 	"sync"
 	"testing"
 
+	. "github.com/jittapont/test-3"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	. "test-3/main"
 )
 
 var _ = BeforeEach(func() {

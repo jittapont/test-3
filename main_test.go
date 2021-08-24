@@ -1,13 +1,10 @@
 package main_test
 
 import (
+	. "github.com/jittapont/test-3"
 	. "github.com/onsi/ginkgo"
-	"sync"
 )
 
 var _ = Describe("main", func() {
-	BeforeEach(func() {
-		Wg = sync.WaitGroup{}
-	})
-
+	Main()
 })

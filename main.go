@@ -7,13 +7,16 @@ import (
 
 var Wg sync.WaitGroup
 
-func main() {
+func Main() {
 	Wg.Add(1)
 	go func(wg *sync.WaitGroup) {
 		defer wg.Done()
 		fmt.Println("in goroutine")
 
 	}(&Wg)
-	Wg.Wait()
 	fmt.Println("vim-go")
+}
+
+func main() {
+	Main()
 }
