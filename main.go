@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"sync"
 )
 
@@ -15,8 +16,11 @@ func Main() {
 
 	}(&Wg)
 	fmt.Println("vim-go")
+	cal()
 }
 
 func main() {
 	Main()
+	http.HandleFunc("/home", HomeHandler)
+	http.ListenAndServe(":8081", nil)
 }
