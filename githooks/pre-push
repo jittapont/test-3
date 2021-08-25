@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo executing pre push hook
+
+set -e
+
+go test -short ./...
+

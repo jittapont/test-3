@@ -1,0 +1,20 @@
+#!/bin/bash
+echo executing pre commit hook
+
+export CGO_ENABLED=1
+
+set -e
+
+STAGED_GO_FILES=$(git diff --diff-filter=d --cached --name-only -- '*.go')
+
+if [[ $STAGED_GO_FILES == "" ]]; then
+    echo "No Go Files to Update"
+else
+    go vet ./...
+    nonfmtfiles=$(gofmt -l $STAGED_GO_FILES)
+    if [[ ! -z $nonfmtfiles ]]; then
+        echo "Please go fmt $nonfmtfiles"
+        exit 1
+    fi
+fi
+
